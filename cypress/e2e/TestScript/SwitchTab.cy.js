@@ -9,7 +9,5 @@ describe('Tabs',()=>{
         cy.go('back').wait(2000)
         cy.contains('Practice Page').should('have.text','Practice Page')
 
-
-
     })
 })
