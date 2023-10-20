@@ -5,17 +5,20 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "OpenTestRunner":"npx cypress open",
-    "HeadedMode":"npx cypress run --headed --spec cypress/e2e "
+    "OpenTestRunner": "npx cypress open",
+    "HeadedMode": "npx cypress run --headed --spec cypress/e2e "
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "cypress": "^13.2.0",
-    "cypress-file-upload": "^5.0.8"
+    "cypress-downloadfile": "^1.2.3",
+    "cypress-file-upload": "^5.0.8",
+    "pdf-parse": "^1.1.1"
   },
   "devDependencies": {
+    "@shelex/cypress-allure-plugin": "^2.40.0",
     "cypress-iframe": "^1.0.1",
     "cypress-xpath": "^2.0.1"
   }

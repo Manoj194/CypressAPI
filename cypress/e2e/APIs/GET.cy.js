@@ -4,7 +4,9 @@ describe("Get a response",function(){
 
     it("GET",()=>{
 
-
+        var d = new Date()
+        cy.log(d.getTime())
+        cy.log(d.getFullYear())
         var queryString={page:2}
         cy.request({
 
@@ -18,4 +20,5 @@ describe("Get a response",function(){
         expect(Response.body.page).to.eq(2)
         })
     })
+    
 })
