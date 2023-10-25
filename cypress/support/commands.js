@@ -52,3 +52,43 @@ Cypress.Commands.add("Topschool_Logout", () => {
         }
     })
 })
+
+Cypress.Commands.add("Creat_New_Teacher",(Teacher_Name,Teacher_Mail,Teacher_contactNumb,Teacher_Adrs,Pincode)=>{
+    var d = new Date()
+   var currentDate = d.getDate()
+    cy.get('input[name="fullName"]').type(Teacher_Name)
+        cy.get('input[name="email"]').type(Teacher_Mail)
+        cy.get('button[aria-label="Choose date"]').click({force:true})
+        cy.get('button[aria-label="calendar view is open, switch to year view"]').click()
+        cy.get('div[class*="MuiYearPicker-root css"] button').contains('2000').click()
+        cy.xpath('//div[@role="grid"]//button[text()="' + currentDate + '"]').click({ force: true })
+        cy.get('div[id="mui-component-select-gender"]').click()
+        cy.get('ul[role="listbox"] li').first().click()
+        cy.get('input[name="contact"]').type(Teacher_contactNumb)
+        cy.get('input[name="address_one"]').type(Teacher_Adrs).wait(2000)
+        cy.get('input[name="pincode"]').type(Pincode).wait(2000)
+        cy.contains('Continue').click({force:true}).wait(700)
+        cy.get('[class="form-row-out"] div[id="demo-simple-select"]').eq(0).click({force:true})
+        cy.get('ul[role="listbox"] li').eq(6).click()
+        cy.contains('Continue').click({force:true}).wait(700)
+        cy.get('div[id="opt-subjects"]').click()
+        cy.get('ul[role="listbox"] li').last().click()
+        cy.get('body').click()
+        cy.get('div[class="left-cls"] input[type="checkbox"]').click()
+        cy.get('div[id="opt-subjects"]').last().click()
+        cy.get('ul[role="listbox"] li').eq(1).click().wait(700)
+        cy.get('body').click()
+        cy.contains('Continue').click({force:true}).wait(700)
+        cy.get('div[class="MuiAlert-message css-1xsto0d"]').should('have.text','Teacher Added Successfully')
+        cy.get('div[class="TeacherDashboard_studentMeta__3kQfU"] p[class*="MuiTypography-root MuiTypography-body1 cs"]').each((ele,index)=>{
+        
+            var Names=ele.text()
+            if (Names.includes(Teacher_Name)) {
+                cy.get('button[aria-label="Delete Teacher"]').eq(index).click({force:true})
+                cy.get('div[class="container-popover MuiBox-root css-0"]').contains('Delete Account').click({force:true})
+                cy.contains('Delete account').click()
+            }
+        })
+    
+
+})

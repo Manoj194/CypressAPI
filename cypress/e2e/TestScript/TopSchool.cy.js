@@ -12,9 +12,9 @@ describe('TopSchool', () => {
         var d = new Date()
         currentDate = d.getDate()
     })
-    afterEach(() => {
-        cy.Topschool_Logout()
-    })
+    // afterEach(() => {
+    //     cy.Topschool_Logout()
+    // })
 
     it('Create_Holiday_Calender', () => {
         cy.contains('Calendar').click({ force: true })
@@ -56,7 +56,69 @@ describe('TopSchool', () => {
             cy.wait(500)
         }
         cy.xpath("//span[text()='AM']/parent::button").click()
-        cy.contains('Notice type*').click({ force: true })
+        //cy.contains('Notice type*').click({ force: true })
+        // cy.get('svg[data-testid="closeIcon"]').click({force:true})
+        cy.get('div[class="side-nav-content "]').trigger('mouseover')
+
+
+    })
+    it('Tc-001 Verify that School admin can add Teachers successfully when entered a valid data', () => {
+        var random = Math.floor(Math.random() * 100)
+        cy.contains('Users').click()
+        cy.get('div[aria-label="Add teacher(s)"]').click()
+        cy.Creat_New_Teacher("joseph", `joseph${random}@gmail.com`, `99999999${random}`, "basavanagudipalya", "561101").wait(3000)
+        cy.get('div[class="side-nav-content "]').trigger('mouseover')
+    })
+    it.only("CreateTemplate", () => {
+        function aa(){
+        cy.viewport(1920, 1080)
+        cy.contains('Reports').click().wait(400)
+        cy.get('div[class="content-popover-reports"]').eq(0).find('div[class="popover-arrow"]', { timeout: 300 }).click({ force: true })
+        cy.xpath('//p').first().should('contains.text', 'Student Gradebook')
+        cy.xpath('//span[contains(.,"Create Template")]').click()
+        cy.xpath('//div[@role="button"]').eq(0).click()
+        cy.get('ul[role="listbox"]>li').contains('Grade 20').click()
+        cy.xpath('//div[@role="button"]').eq(1).click()
+        cy.get('ul[role="listbox"]>li').contains('A').click()
+        cy.get('body').click()
+        cy.xpath('//div[@role="button"]').eq(2).click()
+        cy.get('ul[role="listbox"]>li').contains('1').click()
+        cy.xpath('//div[@role="button"]').eq(3).click()
+        cy.get('ul[role="listbox"]>li').contains('Grade').click()
+        cy.xpath('//button[contains(.,"Continue")]').click().wait(700)
+        cy.xpath('//button[contains(.,"+ Add Test Type")]').click()
+        cy.get('div[aria-haspopup="listbox"]').eq(4).click()
+        cy.get('ul[role="listbox"]>li').contains('1').click()
+        cy.get('body').click()
+        cy.get('div[aria-haspopup="listbox"]').eq(5).click()
+        cy.get('ul[role="listbox"]>li').contains('Half Yearly').click()
+        cy.get('div[aria-haspopup="listbox"]').eq(6).click()
+        cy.get('ul[role="listbox"]>li').contains('100').click()
+        cy.xpath('//button[contains(.,"Continue")]').click().wait(700)
+        cy.xpath('//button[contains(.," + Add Subject ")]').click()
+        cy.get('div[aria-haspopup="listbox"]').eq(7).click()
+        cy.get('ul[role="listbox"]>li').contains('course20').click()
+        cy.xpath('//button[contains(.,"+ Add Theory and Practical")]').click()
+        cy.get('div[aria-haspopup="listbox"]').eq(8).click()
+        cy.get('ul[role="listbox"]>li').contains('Half Yearly').click().wait(700)
+        cy.get('input[name="practicalMarks"]').clear().type('50')
+        cy.xpath('//button[contains(.,"Continue")]').click().wait(700)
+        cy.xpath('//button[contains(.,"+ Add Activity")]').click()
+        cy.get('input[name="activity"]').click().type("NothingAAAA")
+        cy.xpath('//button[contains(.,"Continue")]').click().wait(700)
+        cy.contains('Cancel').click()
+        cy.contains('Continue Without Saving').click().wait(700)
+        cy.xpath('//p').first().should('contains.text', 'Student Gradebook')
+
+        }
+       // aa()
+       //////
+
+
+
+
+
+
 
     })
 })
