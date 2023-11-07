@@ -1,0 +1,58 @@
+[
+    {
+       "name":"USER 1",
+       "role":"ABC ROLE",
+       "CTC":"19,00,000",
+       "total_LeavesTaken":0,
+       "leavesGranted":10,
+       "total_workingDays":25,
+       "bonus":[
+          {
+             "type":"Referral bonus",
+             "appliedMonth":"November",
+             "amount":"25,000"
+          }
+       ],
+       "status":"active"
+    },
+    {},
+    {
+       "name":"USER 3",
+       "role":"HIJK ROLE",
+       "CTC":"15,00,000",
+       "total_LeavesTaken":5,
+       "leavesGranted":10,
+       "total_workingDays":26,
+       "status":"active",
+       "bonus":[
+          {
+             "type":"Referral bonus",
+             "appliedMonth":"December",
+             "amount":"25,000"
+          },
+          {
+             "type":"Annual bonus",
+             "appliedMonth":"March",
+             "amount":"1,00,000"
+          }
+       ]
+    },
+    {
+       "name":"USER 4",
+       "role":"LMN ROLE",
+       "CTC":"5,00,000",
+       "total_LeavesTaken":10,
+       "leavesGranted":10,
+       "total_workingDays":23,
+       "status":"active"
+    },
+    {
+       "name":"USER 5",
+       "role":"OPJ ROLE",
+       "CTC":"4,00,000",
+       "total_LeavesTaken":12,
+       "leavesGranted":7,
+       "total_workingDays":24,
+       "status":"active"
+    }]
+     
