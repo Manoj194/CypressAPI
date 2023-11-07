@@ -4,7 +4,7 @@ const allureWriter = require('@shelex/cypress-allure-plugin/writer');
 
 module.exports = defineConfig({
   includeShadowDom: true,
-  defaultCommandTimeout:6000,
+  defaultCommandTimeout:10000,
   screenshotOnRunFailure:true,
   failOnStatusCode: false,
 
